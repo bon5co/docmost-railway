@@ -9,9 +9,9 @@ FROM docmost/docmost:0.97.0@sha256:40c454d74ffdd9ecb15833e4d96f3a630d59aad862a18
 USER root
 COPY --chmod=0755 boot.sh /railway-boot.sh
 
-ENV PORT=8080 \
+ENV PORT=8080 NODE_ENV=production \
     ADMIN_EMAIL=admin@example.com
 EXPOSE 8080
-WORKDIR /app/apps/server
+
 ENTRYPOINT ["/railway-boot.sh"]
-CMD ["node", "dist/main"]
+CMD ["pnpm", "start"]
